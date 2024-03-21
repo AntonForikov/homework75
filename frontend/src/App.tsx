@@ -3,25 +3,13 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import axios from 'axios';
 import React, {useState} from 'react';
-interface Message {
-  password: string
-  decodedMessage: string
-  encodedMessage: string
-}
+import {Decoded, Encoded, Message} from './types';
 
 const initialMessage = {
   password: '',
   decodedMessage: '',
   encodedMessage: ''
-}
-
-interface Encoded {
-  encoded: string
-}
-
-interface Decoded {
-  decoded: string
-}
+};
 
 function App() {
   const [message, setMessage] = useState<Message>(initialMessage);
