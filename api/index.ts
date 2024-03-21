@@ -8,13 +8,21 @@ app.use(cors({origin: ['http://localhost:5173']}))
 const port = 8000;
 
 app.post('/encode', (req, res) => {
-  const {password, message} = req.body;
-  return res.json({encoded: Vigenere.Cipher(password).crypt(message)});
+  try {
+    const {password, message} = req.body;
+    return res.json({encoded: Vigenere.Cipher(password).crypt(message)});
+  } catch (e) {
+    return res.json(e).status(404);
+  }
 });
 
 app.post('/decode', (req,res) => {
-  const {password, message} = req.body;
-  return res.json({decoded: Vigenere.Decipher(password).crypt(message)});
+  try {
+    const {password, message} = req.body;
+    return res.json({decoded: Vigenere.Decipher(password).crypt(message)});
+  } catch (e) {
+    return res.json(e).status(404);
+  }  
 });
 
 app.listen(port, () => {
