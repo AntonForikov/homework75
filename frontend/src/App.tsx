@@ -55,10 +55,11 @@ function App() {
         setLoading(true);
         const {data} = await axios.post<Encoded>('http://localhost:8000/encode', toSend);
         setMessage((prevState) => ({...prevState, encodedMessage: data.encoded}));
-        setLoading(false);
       } catch (e) {
         alert('Please check URL or run server!');
         console.log(e);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -82,10 +83,11 @@ function App() {
         setLoading(true);
         const {data} = await axios.post<Decoded>('http://localhost:8000/decode', toSend);
         setMessage((prevState) => ({...prevState, decodedMessage: data.decoded}));
-        setLoading(false);
       } catch (e) {
         alert('Please check URL or run server!');
         console.log(e);
+      } finally {
+        setLoading(false);
       }
     }
   };
